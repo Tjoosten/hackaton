@@ -18,7 +18,7 @@ class DocumentsController extends Controller
      */
     public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
 
 
@@ -40,11 +40,15 @@ class DocumentsController extends Controller
      */
     public function store(DocumentValidator $input)
     {
-        if (InfoArticles::create($input->all())) {
+        $data['heading']     = $input->heading;
+        $data['description'] = $input->description;
+        $data['user_id']     = auth()->user()->id;
+
+        if (InfoArticles::create($data)) {
             session()->flash('class', 'alert alert-success');
             session()->flash('message', 'The article has been created');
         }
 
-        return back();
+        return redirect()->back(302);
     }
 }

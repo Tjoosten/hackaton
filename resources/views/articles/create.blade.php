@@ -17,9 +17,6 @@
                 {{-- CRSF Token --}}
                 {{ csrf_field() }}
 
-                {{-- User id --}}
-                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-
                 <form class="form-horizontal" action="{{ route('document.store') }}" method="POST">
                     {{-- Document heading form-group --}}
                     <div class="form-group {{ $errors->has('heading') ? ' has-error' : '' }}">
