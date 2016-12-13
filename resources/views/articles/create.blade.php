@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (isset($_SESSION['class']) && isset($_SESSION['message']))
+    @if (session('class') && session('message'))
         <div class="col-sm-12">
-            <div class="{{ $_SESSION['class'] }}">
-                {{ $_SESSION['message'] }}
+            <div class="{{ session('class') }}">
+                {{ session('message') }}
             </div>
         </div>
     @endif
